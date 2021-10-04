@@ -16,6 +16,7 @@ class Home extends React.Component {
         return (
             <div>
                 { cards }
+                <div></div>
             </div>
         );
     };
