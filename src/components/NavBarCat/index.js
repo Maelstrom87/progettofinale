@@ -8,10 +8,11 @@ class NavBarCat extends React.Component {
     }
     
     render() {
-        const { id , name } = this.props.cat;
+        const { id , name} = this.props.cat;
+
          return (
             <div className="mx-2">
-                <Link to={'/categories/'+id}> {name} </Link>
+                <Link className="nav-link text-black" to={'/categories/'+id+'/name/'+name}> {name} </Link>
             </div>
          )
     }

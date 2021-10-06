@@ -37,9 +37,9 @@ class NavBar extends React.Component {
         let pageDisplay = this.state.pages.map(page=> <NavBarPag key={page.id} pag ={ page } />);
 
         return(
-            <nav className="navbar navbar-light bg-light">
-                <div className="container-fluid d-flex justify-content-start">
-                    <div className="mx-2"><Link to="/">Home </Link></div>
+            <nav className="bg-white shadow navbar navbar-light bg-light">
+                <div className="container-fluid  d-flex justify-content-start">
+                    <div className="mx-2"><Link className="nav-link text-black" to="/">Home </Link></div>
                     {pageDisplay}
                     {catDisplay} 
                 </div>
