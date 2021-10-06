@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './components/Home';
 import FullArticle from './components/FullArticle';
+import NavBar from './components/NavBar';
 // import NotFound from './components/NotFound';
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      
+        <NavBar />
       <span><Link to="/">Home </Link></span>
       <span><Link to="/add">| Add Artist </Link></span>
 
@@ -16,8 +17,11 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/:id">
+          <Route path="/:id" exact>
             <FullArticle />
+          </Route>
+          <Route path="/categories/:cat" >
+            <Home />
           </Route>
           {/*
           <Route path="/artists/:id">

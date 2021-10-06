@@ -23,10 +23,10 @@ class Card extends React.Component {
     
     render() {
         const { id,title, body, categoryName} = this.props.article;
-        console.log(categoryName);
+        // console.log(this.props.article);
          return (
             <div>
-                <div>{ title } - {  }</div>
+                <div>{ title } - { categoryName }</div>
                 <div>{body}</div>
                 {/* dangerouslySetInnerHTML={{__html: <div> {body} >} */}
                 <div><Link to={'/'+id}>Read more</Link></div>
