@@ -9,9 +9,7 @@ export default class Article{
 
 }
 export function wpToArticle(obj) {
-    let firstSplit = obj.content.rendered.split('<p>')[1];
-    let body = firstSplit.split('</p>')[0];
-     
+    let body = obj.content.rendered.split('<p>')[1].split('</p>')[0];
 
     return new Article(obj.id, obj.title.rendered, body, obj.categories[0],obj.categoryName);
 }

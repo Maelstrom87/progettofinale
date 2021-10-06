@@ -78,22 +78,8 @@ class Home extends React.Component {
             }
 
     }        
-    // async setCategory (article) {
-    //     await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
-    //         .then(res => res.json())
-    //         .then(res => {
-    //                 res.forEach(cat => {
-    //                     if(cat.id == article.category) {
-    //                         let catName = {categoryName : cat.name}
-    //                         return article = {...article , ...catName}
-    //                     }
-    //             })
-    //         })
-    // }
 
     render () {
-
-        console.log(this.state.articles);
         const cards = this.state.articles.map(card => <Card key={card.id} article = { card } />);
         
         return (

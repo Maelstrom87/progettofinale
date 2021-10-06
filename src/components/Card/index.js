@@ -27,8 +27,8 @@ class Card extends React.Component {
          return (
             <div>
                 <div>{ title } - { categoryName }</div>
-                <div>{body}</div>
-                {/* dangerouslySetInnerHTML={{__html: <div> {body} >} */}
+                <div dangerouslySetInnerHTML={{__html:body}}></div>
+                
                 <div><Link to={'/'+id}>Read more</Link></div>
             </div>
          )

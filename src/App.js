@@ -2,6 +2,7 @@ import './App.css';
 import Home from './components/Home';
 import FullArticle from './components/FullArticle';
 import NavBar from './components/NavBar';
+import DynamicPage from './components/DynamicPage';
 // import NotFound from './components/NotFound';
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -10,8 +11,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-      <span><Link to="/">Home </Link></span>
-      <span><Link to="/add">| Add Artist </Link></span>
 
         <Switch>
           <Route path="/" exact>
@@ -22,6 +21,9 @@ function App() {
           </Route>
           <Route path="/categories/:cat" >
             <Home />
+          </Route>
+          <Route path="/page/:slug" >
+            <DynamicPage />
           </Route>
           {/*
           <Route path="/artists/:id">

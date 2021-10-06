@@ -29,10 +29,8 @@ class FullArticle extends React.Component {
 
         return(
             <div>
-                <div>{ title } - {  }</div>
-                <div>{body}</div>
-                {/* dangerouslySetInnerHTML={{__html: <div> {body} >} */}
-
+                <div>{ title } - { categoryName }</div>
+                <div dangerouslySetInnerHTML={{__html:body}}></div>
             </div>
         )
     }
