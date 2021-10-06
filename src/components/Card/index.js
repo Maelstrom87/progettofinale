@@ -8,16 +8,19 @@ class Card extends React.Component {
     }
     
     render() {
-        const { id,title, preview, categoryName} = this.props.article;
-
+        const { id,title, preview, categoryName ,image} = this.props.article;
+        const style = {backgroundImage: 'url(' + image + ')'};
          return (
-            <div className="post my-2 g-2 container d-flex flex-column align-items-start">
-                <div>
-                    <div className="p-1"><span className="fs-3 me-4" >{ title }</span> <span className="fs-6"> <strong>category:</strong> { categoryName }</span> </div>
+            <div className="post my-2 pe-0 container d-flex flex-raw justify-content-between ">
+                <div className="d-flex flex-column align-items-start ">
+                    <div>
+                        <div className="p-1"><span className="fs-3 me-4" >{ title }</span> <span className="fs-6"> <strong>category:</strong> { categoryName }</span> </div>
+                    </div>
+                    <div className="text-start " dangerouslySetInnerHTML={{__html:preview}}></div>
+                    
+                    <div className="btn readmore ms-auto me-2 my-2"><Link className="text-white text-decoration-none text-end" to={'/'+id}>Read more...</Link></div>
                 </div>
-                <div dangerouslySetInnerHTML={{__html:preview}}></div>
-                
-                <div className="btn readmore my-2"><Link className="text-white text-decoration-none" to={'/'+id}>Read more...</Link></div>
+                <div id="image"  style={ style }></div>
             </div>
          )
     }

@@ -21,7 +21,6 @@ class Home extends React.Component {
             await fetch(url)
                 .then(res => res.json())
                 .then(arts=> {
-                    
                     this.setState({
                         articles : arts.map(article => wpToArticle(article))
                     })
@@ -78,15 +77,16 @@ class Home extends React.Component {
     }        
 
     render () {
+        console.log(this.state.articles);
         const cards = this.state.articles.map(card => <Card key={card.id} article = { card } />);
         let category = this.props.match.params.name;
-   
+        
         return (
-            <div>
+            <div className="bg-dark">
                 <div className="p-2 shadow ">
                     <h3>{category}</h3> 
                 </div>
-                <div className="d-flex flex-column align-items-start">
+                <div className="d-flex flex-column ">
                    { cards }
                 </div>
             </div>
