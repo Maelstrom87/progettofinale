@@ -1,5 +1,5 @@
 export default class Article{
-    constructor(id,title,body,category,categoryName){
+    constructor(id,title,body,category,categoryName=""){
         this.body = body
         this.category = category
         this.categoryName = categoryName
@@ -13,5 +13,5 @@ export function wpToArticle(obj) {
     let body = firstSplit.split('</p>')[0];
      
 
-    return new Article(obj.id, obj.title.rendered, body, obj.categories[0],obj.categoryName = 0);
+    return new Article(obj.id, obj.title.rendered, body, obj.categories[0],obj.categoryName);
 }

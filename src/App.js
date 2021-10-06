@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './components/Home';
+import FullArticle from './components/FullArticle';
 // import NotFound from './components/NotFound';
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -15,9 +16,10 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          {/* <Route path="/add">
-            <Add />
+          <Route path="/:id">
+            <FullArticle />
           </Route>
+          {/*
           <Route path="/artists/:id">
             <Add  />
           </Route>

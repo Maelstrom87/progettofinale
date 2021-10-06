@@ -15,33 +15,48 @@ class Home extends React.Component {
     async componentDidMount () {
         let arts = await fetch('http://bedrock.test/wp-json/wp/v2/posts')
             .then(res => res.json())
-        
-            let articles = arts.map(article => wpToArticle(article))
-            await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
+            .then(arts=> {
+                
+                this.setState({
+                    articles : arts.map(article => wpToArticle(article))
+                })
+            })
+            // let articles = 
+            // console.log(articles)
+            // await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
+            // .then(res => res.json())
+            // .then(res => {
+            //     articles.forEach(element => {
+            //         res.forEach(cat => {
+            //             if(cat.id == element.category) {
+            //                 let catName = {categoryName : cat.name}
+            //                 element = {...element , ...catName};
+            //             }
+            //         });
+            //         console.log(element);
+            //     });
+            // });
+    }
+    // componentDidUpdate () {
+    //     console.log(this.state.articles);
+    // }        
+    async setCategory (article) {
+        await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
             .then(res => res.json())
             .then(res => {
-                articles.forEach(element => {
                     res.forEach(cat => {
-                        if(cat.id == element.category) {
+                        if(cat.id == article.category) {
                             let catName = {categoryName : cat.name}
-                            element = {...element , ...catName};
+                            return article = {...article , ...catName}
                         }
-                    });
-                    console.log(element);
-                });
-            });
-            
-
-        this.setState({
-            articles
-        })
-        
-   
-            
+                })
+            })
     }
 
     render () {
-        const cards = this.state.articles.map(card => <Card key={card.id} article = { card }/>);
+
+        
+        const cards = this.state.articles.map(card => <Card key={card.id} article = { card } />);
         
         return (
             <div>
