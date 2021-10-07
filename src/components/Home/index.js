@@ -18,40 +18,40 @@ class Home extends React.Component {
     async componentDidMount () {
        const url = this.props.match.params.cat ? URL+'/?categories='+this.props.match.params.cat : URL
 
-            await fetch(url)
-                .then(res => res.json())
-                .then(arts=> {
-                    this.setState({
-                        articles : arts.map(article => wpToArticle(article))
-                    })
-                })
-     
-     
-            let arts = [...this.state.articles];
-            let categories = await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
-                .then(res => res.json())
-            let articles = [];
-            arts.forEach(element => {
-                categories.forEach(cat => {
-                    if (element.category == cat.id) {
-                        let catName = {categoryName : cat.name}
-                        element = {...element, ...catName}
-                        articles.push(element)
-                    }
-                })
+        await fetch(url)
+            .then(res => res.json())
+            .then(arts=> {
+                this.setState({
+                    articles : arts.map(article => wpToArticle(article))
+                });
             });
-            this.setState({ articles })
-    }
+        
+        let arts = [...this.state.articles];
+        let categories = await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
+            .then(res => res.json())
+        let articles = [];
+        arts.forEach(element => {
+            categories.forEach(cat => {
+                if (element.category == cat.id) {
+                    let catName = {categoryName : cat.name};
+                    element = {...element, ...catName};
+                    articles.push(element);
+                };
+            });
+        });
+
+        this.setState({ articles })
+    };
 
     async componentDidUpdate () {
         const url = this.props.match.params.cat ? URL+'/?categories='+this.props.match.params.cat : URL;
 
-        if(this.props.match.params.cat != this.state.chosenCat){
+        if(this.props.match.params.cat != this.state.chosenCat) {
             await fetch(url)
             .then(res => res.json())
             .then(arts=> {               
                 this.setState({
-                    articles : arts.map(article => wpToArticle(article)),
+                    articles : arts.map( article => wpToArticle(article) ),
                     chosenCat : this.props.match.params.cat
                 })
             })
@@ -64,21 +64,18 @@ class Home extends React.Component {
             arts.forEach(element => {
                 categories.forEach(cat => {
                     if (element.category == cat.id) {
-                        let catName = {categoryName : cat.name}
-                        element = {...element, ...catName}
-                        articles.push(element)
-                    }
-                })
-            });
-            
-            this.setState({ articles })
-        }
-
-    }        
+                        let catName = {categoryName : cat.name};
+                        element = {...element, ...catName};
+                        articles.push(element);
+                    };
+                });
+            });          
+            this.setState({ articles });
+        };
+    };        
 
     render () {
-        console.log(this.state.articles);
-        const cards = this.state.articles.map(card => <Card key={card.id} article = { card } />);
+        const cards = this.state.articles.map(card => <Card key={card.id} article = {card} />);
         let category = this.props.match.params.name;
         
         return (
@@ -87,7 +84,7 @@ class Home extends React.Component {
                     <h3>{category}</h3> 
                 </div>
                 <div className="d-flex flex-column ">
-                   { cards }
+                   {cards}
                 </div>
             </div>
         );

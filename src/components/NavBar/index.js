@@ -27,14 +27,14 @@ class NavBar extends React.Component {
             .then(res => res.json())
             .then(res => {
                 let pages = res.filter(pag => pag.slug != 'sample-page');
-                this.setState({ pages})
+                this.setState({pages})
             })
 
     }
 
     render () {
-        let catDisplay = this.state.categories.map(cat => <NavBarCat key={cat.id} cat ={ cat }/>);
-        let pageDisplay = this.state.pages.map(page=> <NavBarPag key={page.id} pag ={ page } />);
+        let catDisplay = this.state.categories.map(cat => <NavBarCat key={cat.id} cat ={cat}/>);
+        let pageDisplay = this.state.pages.map(page=> <NavBarPag key={page.id} pag ={page} />);
 
         return(
             <nav className="bg-white shadow navbar navbar-light bg-light">

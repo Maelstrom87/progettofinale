@@ -8,7 +8,7 @@ class NavBarCat extends React.Component {
     }
     
     render() {
-        const { id , name} = this.props.cat;
+        const {id , name} = this.props.cat;
 
          return (
             <div className="mx-2">

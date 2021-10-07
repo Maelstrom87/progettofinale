@@ -8,14 +8,13 @@ class NavBarPag extends React.Component {
     }
 
     render() {
-        const { id , title,slug } = this.props.pag;
+        const {title,slug} = this.props.pag;
          return (
             <div className="mx-2">
                 <Link className="nav-link text-black" to={'/page/'+slug}> {title.rendered} </Link>
             </div>
          )
-    }
-
-}
+    };
+};
 
 export default withRouter(NavBarPag);

@@ -1,5 +1,4 @@
 import React from 'react';
-import reactDom from 'react-dom';
 import { withRouter } from 'react-router-dom';
 import { wpToPage } from '../../models/Page';
 
@@ -14,22 +13,17 @@ class DynamicPage extends React.Component {
 
     async componentDidMount () {
         const slug = this.props.match.params.slug;
+
         await fetch('http://bedrock.test/wp-json/wp/v2/pages/?slug='+slug)
             .then(res => res.json())
             .then(pages => {
                 let page = wpToPage(pages[0])
-                this.setState ({ page })
-            })
-    }
-    
-    componentDidUpdate () {
-
-        console.log(this.state.page);
-
-    }
+                this.setState ({page})
+            });
+    };
 
     render() {
-        const { title ,body } = this.state.page;
+        const {title ,body} = this.state.page;
 
         return(
             <div className="fullArt bg-dark py-1">
