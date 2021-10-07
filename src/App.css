@@ -1,3 +1,4 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 .App {
   text-align: center;
 }
@@ -35,4 +36,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header{
+  width: 100%;
+  height: 6rem;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  box-shadow: 5px 5px 4px #282c34;
+}
+
+.header h1{
+  text-shadow:2px 2px 4px #282c34;
+}
+
+.navbar a{
+  text-shadow: 1px 1px 3px #282c34;
+}
+
+.readmore {
+background-color: #064ba4;
+}
+.post {
+  background: linear-gradient(14deg, rgba(0,15,80,1) 0%, rgba(252,252,252,1) 34%);
+  box-shadow: 2px 2px 4px white;
+}
+
+#image {
+  min-width: 25%;
+  max-width: 25%;
+  background: linear-gradient(86deg, rgba(255,255,255,1) 0%, rgba(252,252,252,0) 23%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fullArt {
+  height: 100vh;
+}
+
+.FArt{
+  background: linear-gradient(14deg, rgba(0,15,80,1) 0%, rgba(252,252,252,1) 34%);
+  box-shadow: 2px 2px 4px white;
+}
+
+.fImage{
+  max-width:600px;
+  max-height:600px;
+  object-fit: contain;
 }
