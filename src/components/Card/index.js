@@ -11,7 +11,7 @@ class Card extends React.Component {
         const { id,title, preview, categoryName ,image} = this.props.article;
         const style = {backgroundImage: 'url(' + image + ')'};
          return (
-            <div className="post my-2 pe-0 container d-flex flex-raw justify-content-between ">
+            <div className="post  my-2 pe-0 container d-flex flex-raw justify-content-between shadow-white">
                 <div className="d-flex flex-column align-items-start ">
                     <div>
                         <div className="p-1"><span className="fs-3 me-4" >{ title }</span> <span className="fs-6"> <strong>category:</strong> { categoryName }</span> </div>
