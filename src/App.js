@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import DynamicPage from './components/DynamicPage';
 import Header from './components/Header';
 import NotFound from './components/NotFound';
-import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -25,14 +25,14 @@ function App() {
           </Route>
           <Route path="/page/:slug" >
             <DynamicPage />
-          </Route>          
+          </Route>
           <Route path="*">
-            <NotFound  />
+            <NotFound />
           </Route>
         </Switch>
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
