@@ -25,15 +25,11 @@ class Home extends React.Component {
     });
   }
 
-  async componentDidMount() {
-    const url = this.props.match.params.cat ? URL + '/?categories=' + this.props.match.params.cat : URL;
-
-    this.retrieve(url);
-
+  async setCategory() {
+    let articles = [];
     let arts = [...this.state.articles];
     let categories = await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
       .then(res => res.json())
-    let articles = [];
 
     arts.forEach(element => {
       categories.forEach(cat => {
@@ -47,6 +43,13 @@ class Home extends React.Component {
     });
 
     this.setState({ articles })
+  }
+
+  async componentDidMount() {
+    const url = this.props.match.params.cat ? URL + '/?categories=' + this.props.match.params.cat : URL;
+
+    this.retrieve(url);
+    this.setCategory();
   };
 
   async componentDidUpdate() {
@@ -61,24 +64,8 @@ class Home extends React.Component {
             chosenCat: this.props.match.params.cat
           });
         });
-      
-      let articles = [];
-      let arts = [...this.state.articles];
-      let categories = await fetch('http://bedrock.test/wp-json/wp/v2/categories/')
-        .then(res => res.json())
 
-      arts.forEach(element => {
-        categories.forEach(cat => {
-          if (element.category == cat.id) {
-            let catName = { categoryName: cat.name };
-            element = { ...element, ...catName };
-
-            articles.push(element);
-          };
-        });
-      });
-      
-      this.setState({ articles });
+      this.setCategory();
     };
   };
 
